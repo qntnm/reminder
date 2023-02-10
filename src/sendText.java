@@ -42,7 +42,7 @@ public class sendText {
 
     /**
      * Sets the text message
-     * @param p_textMessage
+     * @param p_textMessage         
      */
     public void setTextMessage(String p_textMessage) {
         text = p_textMessage;
