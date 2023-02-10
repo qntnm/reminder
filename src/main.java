@@ -24,7 +24,7 @@ public class main {
         // Traveses the arraylist and prints the name that the user inputted of each
         // object in the arraylist.
         for (progress j : arrayProgress) {
-            System.out.println(j.name);
+            System.out.println(j.id + " " + j.name);
         }
         // Closes Scanner Object (needed for "Resource leak")
         scan.close();
