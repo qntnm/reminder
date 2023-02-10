@@ -1,7 +1,7 @@
 # reminder (app)
 This is my CS IA, a reminder app that helps people with ADHD. 
 # Libraries used
-This project uses (will use) twillio [title] https://www.twilio.com/docs/libraries/java
+This project uses (will use) [twilio](https://www.twilio.com/docs/libraries/java)
 # sucess criteria
 - User can add a reminder with a progress amount, timer duration, 
 - User can delete a reminder
