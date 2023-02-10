@@ -18,4 +18,4 @@ ToDo list:
 
 
 # logo (client asked to include it)
-![alt text] (https://github.com/qntnm/reminder/blob/main/documentation/download.jpg "logo")
+![alt text](https://github.com/qntnm/reminder/blob/main/documentation/download.jpg "logo")
