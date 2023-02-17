@@ -1,4 +1,3 @@
-import java.util.UUID;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -10,13 +9,14 @@ public class main {
         // Amount of reminders they want (used in the for loop)
         double amount;
         amount = scan.nextDouble();
+        scan.nextLine();
         // Array List of Progress Objects
         ArrayList<progress> arrayProgress = new ArrayList<progress>();
 
         // Loops for user inputted amount of times (How many reminders they want)
         // then creates an object with a name (user inputted) and adds it to the
         // arraylist
-        for (int i = 0; i <= amount; i++) {
+        for (int i = 0; i < amount; i++) {
             System.out.println("Name of the progress?");
             progress progress = new progress(scan.nextLine());
             arrayProgress.add(i, progress);
@@ -26,8 +26,81 @@ public class main {
         for (progress j : arrayProgress) {
             System.out.println(j.id + " " + j.name);
         }
+        // Testing Logo in "ascii art"
+        Logos();
+        
         // Closes Scanner Object (needed for "Resource leak")
         scan.close();
 
+        //TableCreator(5, 5,arrayProgress);
+        
+        //System.out.println("\n" + getLengthArray(arrayProgress));
+        //System.out.println("Jeff");
+        //System.out.println(AutoIncrement("Jeff", " "));
+        //System.out.println(AutoIncrement(" ", "-", false, true, getLengthArray(arrayProgress)));
+
     }
+
+    public static void Logo(){
+        System.out.println("                    ██████  ███████ ███    ███ ██ ███    ██ ██████  ███████ ██████");
+        System.out.println("                    ██  ██  ██      ████  ████ ██ ████   ██ ██   ██ ██      ██  ██");
+        System.out.println("                    ██████  █████   ██ ████ ██ ██ ██ ██  ██ ██   ██ █████   ██████");
+        System.out.println("                    ██   ██ ██      ██  ██  ██ ██ ██  ██ ██ ██   ██ ██      ██   ██");
+        System.out.println("                    ██   ██ ███████ ██      ██ ██ ██   ████ ██████  ███████ ██   ██");
+       
+       
+        
+                                                            
+        
+    }
+    public static void ReminderScreen(){
+       
+        
+    }
+    public static void TableCreator(int row, int column, ArrayList<progress> reminders){
+
+        for(int i = 0; i < reminders.size(); i++){
+            System.out.println("\n");
+            System.out.println("+" + AutoIncrement("", "-", true, getLengthArray(reminders)) + "+");
+            for(int j = 0; j < column; j++){
+                if(j%5==0 || j==0){
+                    //System.out.print("|  " + reminders.get(i).name + " | ");
+                    System.out.print("|" + AutoIncrement(reminders.get(i).name, " ",false,0) + "|");
+                }else{
+                // System.out.print(" " + reminders.get(i).name + " | ");
+                System.out.print( AutoIncrement(reminders.get(i).name, " ",false,0) + "|");
+                }
+                
+            }
+        }
+    }
+    public static String AutoIncrement(String input, String value, boolean column, int length){
+        String output1 = "";
+        String output2 = "";
+        String dash1 = "";
+
+        if(!column){
+        for(int i = 0; i < 6; i++){
+           if(i%2 ==0){output1 += value;}else{ output2 += value;}
+        }
+        }else{
+        for(int j = 0; j <= length; j++){
+            dash1 += value;
+        }
+    }
+
+        String output = output1 + input +  output2;
+        String dash = dash1;
+        if(!column) {return output;}  else return dash; 
+        
+        
+    }
+    public static int getLengthArray(ArrayList<progress> reminders){
+        int length = 0;
+        for(int i = 0; i < reminders.size(); i++){
+            length += reminders.get(i).name.length();
+        }
+        return (length * 5) + 34;
+    }
+    
 }
