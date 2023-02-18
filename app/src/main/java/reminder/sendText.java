@@ -64,11 +64,6 @@ public class sendText {
     public boolean textSent() {
         return true;
     }
-    public static void main (String[]args){
-    //    Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-    //     Message message = Message.creator(new PhoneNumber("+18337380927"), new PhoneNumber("
-    //     +16024913461"), "i love ibrahim").create();
-    //     System.out.println(message.getSid());
-    }
+    
 
 }
