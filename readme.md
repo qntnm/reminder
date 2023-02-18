@@ -12,8 +12,7 @@ ToDo list:
 - [x] write the getters and setters for each class
 - [x] implement a basic text based interface for user input
 - [x] implement a progress bar (text based)
-- [ ] reminder hashmap, reminder: date (when the object was initaizled in local time)
-- [ ] reminder progress, set completion 
+- [ ] reminder hashmap, reminder: date (when the object was initaizled in local time)n 
 - [ ] compare reminder date to local date then let streak be incremnted
 - [ ] implement a multidimensional tablecreator
 - [ ] implement SMS text messaging using twillio
