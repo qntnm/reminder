@@ -9,37 +9,39 @@ public class progress {
     UUID id;
     /**
     * Creates a progress
-    * @param name of the progress
+    * 
     */
-    public progress(String name, int completion, int current) {
-        this.name = name;
+    public progress(int completion, int current) {
         this.completion = completion;
         this.current = current;
         id = UUID.randomUUID();
     }
 
     public void setProgress(String p_name, int p_completion){
-        name = p_name;
         completion = p_completion;
     } 
-    public static double getProgessNumber(double num2, double num1){
+    public  double getProgessNumber(double num2, double num1){
         double num3 = (num2/num1) * 100;
         return num3;
     }  
-    public static String getProgress(int p_current, int p_completion, String x){
+    public  String getProgress(){
+        if(current !=0 && completion !=0){
         String xl= "x";
         String ol = "o";
         String array = "";
         String tempo = "";
         String tempx = "";
-        for(int i = 0; i<p_current; i++){
+        for(int i = 0; i<current; i++){
             tempo += ol;
         }
-        for(int j=0; j <(p_completion-p_current); j++){
+        for(int j=0; j <(completion-current); j++){
             tempx += xl;
         }
-        array = "[" + tempo + (int) getProgessNumber(5,10)+ "%" + tempx + "]";
+        array = "[" + tempo + (int) getProgessNumber(current,completion)+ "%" + tempx + "]";
         return array;
+    }else{
+        return "[0%]";
+    }
         
     }
 

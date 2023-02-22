@@ -2,9 +2,9 @@ package reminder;
 
 
 import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 public class reminder{
     String title;
     Boolean isComplete;
@@ -12,21 +12,19 @@ public class reminder{
     int snooze;
     int streak;
     Timer time;
-    progress progress;
+    progress progressUser;
     UUID id;
-    LocalDateTime now;
+    LocalDate now;
     int completion;
-
+    texter twilio;
     /**
      * Creates a reminder
      * 
      * @param title of the remidner
      * @param isComplete if the reminder is complete (boolean)
      * @param duration of the reminder
-     * @param snooze
-     * @param streak
-     * @param time
-     * @param progress
+     * @param snooze how many times they've completed the task (within the day)
+     * @param streak how many times they've done the reminder (in days)
      */
     public reminder(String title, Boolean isComplete, int duration, int snooze, int streak, int completion){
         this.title = title;
@@ -34,12 +32,14 @@ public class reminder{
         this.duration = duration;
         this.streak = streak;
         this.snooze = snooze;
-        this.completion = completion;
-        progress = new progress(title,completion,snooze); // XXX make sure this works
+        this.completion = completion;                                               
+        progressUser = new progress(this.snooze,this.completion);  
         time = new Timer();
+        time.schedule(new textTask(), duration*60000);
         id = UUID.randomUUID();
-        now = LocalDateTime.now(); 
-    
+        now = LocalDate.now(); 
+        twilio = new texter(title);
+        
    
     }
 
@@ -73,9 +73,15 @@ public class reminder{
     public int getStreak(){
         return streak;
     }
-    public LocalDateTime getDate(){
+    public LocalDate getDate(){
         return now;
     } 
+    public String getProgess(){
+        return progressUser.getProgress();
+    }
+    public void setDate(LocalDate p_date){
+        now = p_date;
+    }
     /**
      * Sets the title of the Reminder
      *  @param a title (stroing) to set to the reminder
@@ -121,6 +127,15 @@ public class reminder{
     public void setStreak(int p_streak){
         streak = p_streak;
     }
+    public class textTask extends TimerTask {
+        public void run() {
+        if(!isComplete && snooze != 0){
+            System.out.println("Timer up, text going through");
+            
+            time.cancel(); //Terminate the timer thread
+        }
 
+        }
+    }
 
 }
