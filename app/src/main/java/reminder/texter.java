@@ -11,6 +11,7 @@ public class texter {
     public static final String TWILIO_PHONE_NUMBER = "+18337380927";
     
     String text;
+    boolean verifySent;
 
     /**
      * Creates a SendText
@@ -19,6 +20,7 @@ public class texter {
      */
     public texter(String text) {
         this.text = text;
+
     }
 
 
@@ -47,14 +49,18 @@ public class texter {
      * @return if the text was sent
      */
     public boolean textSent() {
-        return true;
+        return verifySent;
     }
-
+    public void setTextSent(boolean x){
+        verifySent = x;
+    }
     public void sendText() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
                 new PhoneNumber("+16024913461"), new PhoneNumber(TWILIO_PHONE_NUMBER), text).create();
-
+            
+        setTextSent(true);
     }
+    
 
 }
