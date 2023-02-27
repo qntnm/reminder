@@ -2,13 +2,16 @@ package reminder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class table {
-    public static void tableScreen(ArrayList<reminder> arrayReminders){
+    public static void tableScreen(ArrayList<reminder> arrayReminders) throws InterruptedException{
+        System.out.print("\033\143");
         util.TableCreator(arrayReminders);
 
+        
+
     }
-    
 public static ArrayList<reminder> addReminders(){
     Scanner scan = new Scanner(System.in);
     String title = "";

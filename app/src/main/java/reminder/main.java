@@ -2,47 +2,15 @@ package reminder;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class main {
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        // Parameters for a reminder object (Scanner)
-        String title = "";
-        boolean isComplete = false;
-        int duration = 0;
-        int snooze = 0;
-        int streak = 0;
-        int completion = 0;
-        System.out.println("How many reminders do you want?");
-        // Amount of reminders they want (used in the for loop)
-        int amount;
-        amount = scan.nextInt();
-        scan.nextLine();
-        // Array List of Progress Objects
-        ArrayList<reminder> arrayReminders = new ArrayList<reminder>();
-
-        // Loops for user inputted amount of times (How many reminders they want)
-        // then creates an object with a name (user inputted) and adds it to the
-        // arraylist
-        for (int i = 0; i < amount; i++) {
-            System.out.println("Title of the Reminder?");
-            title = scan.nextLine();
-            System.out.println("How long should the timer be? (in mintues, 60 minues in a hour)");
-            duration = scan.nextInt();
-            scan.nextLine();
-            System.out.println("How many times do you want to get reminded");
-            completion = scan.nextInt();
-
-            reminder userReminders = new reminder(title,isComplete,duration,snooze,streak,completion);
-            arrayReminders.add(i, userReminders);
-        }
-        // Traveses the arraylist and prints the name that the user inputted of each
-        // object in the arraylist.
-        
-        // Closes Scanner Object (needed for "Resource leak")
-        scan.close();
-        util.TableCreator(arrayReminders);
+    public static void main(String[] args) throws InterruptedException {
+    ArrayList<reminder> userArray = new ArrayList<reminder>();
+     welcome.welcomeScreen();
+     userArray = table.addReminders();
+    table.tableScreen(userArray);
     
     }
 

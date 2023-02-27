@@ -31,11 +31,10 @@ public class util {
     // on how many reminders
     public static void TableCreator(ArrayList<reminder> reminders) {
         // Iterates through every object
-        System.out.println("\t" + "|Name|" + "\t" + "|Duration|" + "\t" + "|date|" + "\t" + "|complete|" + "\t" + "|snooze|"); 
+        System.out.println("     Name " + "\t" + " Time  " + "  " + "  date  " + " " + "  complete " + "   " + " snooze ");
         for (int i = 0; i < reminders.size(); i++) {
-            System.out.println("\n");
             System.out.println("+" + AutoIncrement("", "-", true, getLengthArray(reminders,i)) + "+");
-            System.out.println(spaceOut(1, reminders.get(i).getTitle(), reminders.get(i)) + spaceOut(2, intToString(reminders.get(i).getDuration()), reminders.get(i)) + spaceOut(3, dateToString(reminders.get(i).getDate()), reminders.get(i)) + spaceOut(5, booleanToString(reminders.get(i).getComplete()), reminders.get(i)) + spaceOut(4,  intToString(reminders.get(i).completion), reminders.get(i))); 
+            //System.out.println(spaceOut(1, reminders.get(i).getTitle(), reminders.get(i)) + spaceOut(2, intToString(reminders.get(i).getDuration()), reminders.get(i)) + spaceOut(3, dateToString(reminders.get(i).getDate()), reminders.get(i)) + spaceOut(5, booleanToString(reminders.get(i).getComplete()), reminders.get(i)) + spaceOut(4,  intToString(reminders.get(i).completion), reminders.get(i))); 
         // Iterates through every name within every object and prints it
             for (int j = 0; j < 5; j++) {
                 if (j == 0) {
@@ -50,8 +49,8 @@ public class util {
                 }else if(j==3){
                     System.out.print(AutoIncrement(booleanToString(reminders.get(i).getComplete()), " ", false, 0) + "|");
                 }else {
-                    System.out.print(AutoIncrement(intToString(reminders.get(i).completion), " ", false, 0) + "|");
-                    System.out.println( "\t" + reminders.get(i).getProgess());
+                    System.out.print(AutoIncrement(intToString(reminders.get(i).getSnooze()), " ", false, 0) + "|");
+                    System.out.println( "\n" + reminders.get(i).getProgess());
                 }
 
             }
@@ -93,15 +92,16 @@ public class util {
     public static int getLengthArray(ArrayList<reminder> reminders, int index) {
         int length = 0;
 
-        length += (reminders.get(index).getTitle().length() + intToString(reminders.get(index).getDuration()).length() + intToString(reminders.get(index).completion).length() + booleanToString(reminders.get(index).getComplete()).length());
-        // return (length * 5) + 34;
-        return length;
+        length += (reminders.get(index).getTitle().length() + intToString(reminders.get(index).getDuration()).length() + intToString(reminders.get(index).completion).length() + booleanToString(reminders.get(index).getComplete()).length() + dateToString(reminders.get(index).getDate()).length());
+        //return (length * 5) + 34;
+        return length + 34;
     }
+    @Deprecated
     public static String spaceOut(int j,String k,reminder l){
         String spaced = "";
         // title
         if(j==1){
-            spaced = AutoIncrement(k," " , false,(l.title).length());
+            spaced = AutoIncrement(k," " , true,(l.title).length());
             return spaced;
         // duration
         }else if(j==2){

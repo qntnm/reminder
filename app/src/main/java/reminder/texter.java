@@ -7,7 +7,7 @@ import com.twilio.type.PhoneNumber;
 public class texter {
     // Twilio Account Info (Private concel in some way)
     public static final String ACCOUNT_SID = "ACfb4ac3846954f242eeb830d0a2cbc391";
-    public static final String AUTH_TOKEN = "d0d7e543bbc6deb5cc1b4a90b641bb37";
+    public static final String AUTH_TOKEN = "092cc7abadb7df669f397d0f7bff3467";
     public static final String TWILIO_PHONE_NUMBER = "+18337380927";
     
     String text;
@@ -20,7 +20,7 @@ public class texter {
      */
     public texter(String text) {
         this.text = text;
-
+        verifySent = false;
     }
 
 
@@ -57,7 +57,7 @@ public class texter {
     public void sendText() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-                new PhoneNumber("+16024913461"), new PhoneNumber(TWILIO_PHONE_NUMBER), text).create();
+                new PhoneNumber("+16024913461"), new PhoneNumber(TWILIO_PHONE_NUMBER),"drink water bitc*").create();
             
         setTextSent(true);
     }

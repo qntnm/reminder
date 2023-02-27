@@ -129,9 +129,10 @@ public class reminder{
     }
     public class textTask extends TimerTask {
         public void run() {
-        if(!isComplete && snooze != 0){
+        if(!isComplete && !twilio.verifySent){
             System.out.println("Timer up, text going through");
-            
+            twilio.sendText();
+            setSnooze(getSnooze()+1);
             time.cancel(); //Terminate the timer thread
         }
 
