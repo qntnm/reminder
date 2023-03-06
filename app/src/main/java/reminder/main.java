@@ -10,7 +10,7 @@ public class main {
     ArrayList<reminder> userArray = new ArrayList<reminder>();
      welcome.welcomeScreen();
      userArray = table.addReminders();
-    table.tableScreen(userArray);
+     table.tableScreen(userArray);
     
     }
 
