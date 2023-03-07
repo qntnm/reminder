@@ -27,27 +27,27 @@ public class util {
 
     }
 
-    // Column Major CSV style table creator, 5 columns (for now) rows are dependent
-    // on how many reminders
+    // Column Major CSV style table creator, 5 columns (for now) rows are dependent on how many reminders
     public static void TableCreator(ArrayList<reminder> reminders) {
         // Iterates through every object
         System.out.println("     Name " + "\t" + " Time  " + "  " + "  date  " + " " + "  complete " + "   " + " snooze ");
         for (int i = 0; i < reminders.size(); i++) {
             System.out.println("+" + AutoIncrement("", "-", true, getLengthArray(reminders,i)) + "+");
-            //System.out.println(spaceOut(1, reminders.get(i).getTitle(), reminders.get(i)) + spaceOut(2, intToString(reminders.get(i).getDuration()), reminders.get(i)) + spaceOut(3, dateToString(reminders.get(i).getDate()), reminders.get(i)) + spaceOut(5, booleanToString(reminders.get(i).getComplete()), reminders.get(i)) + spaceOut(4,  intToString(reminders.get(i).completion), reminders.get(i))); 
         // Iterates through every name within every object and prints it
             for (int j = 0; j < 5; j++) {
+                // Title Case
                 if (j == 0) {
-                    // System.out.print("| " + reminders.get(i).name + " | ");
                     System.out.print("|" + AutoIncrement(reminders.get(i).title, " ", false,     0) + "|");
-                    //System.out.println(reminders.get(i))
+                // Duration Case
                 } else if( j == 1) {
-                    // System.out.print(" " + reminders.get(i).name + " | ");
                     System.out.print(AutoIncrement(intToString(reminders.get(i).getDuration()), " ", false, 0) + "|");
+                // Date Case
                 } else if(j == 2){
                     System.out.print(AutoIncrement(dateToString(reminders.get(i).getDate()), " ", false, 0) + "|");
+                // Complete Case
                 }else if(j==3){
                     System.out.print(AutoIncrement(booleanToString(reminders.get(i).getComplete()), " ", false, 0) + "|");
+                // Snooze case (since its last the progress also is outputed)
                 }else {
                     System.out.print(AutoIncrement(intToString(reminders.get(i).getSnooze()), " ", false, 0) + "|");
                     System.out.println( "\n" + reminders.get(i).getProgess());

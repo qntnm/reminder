@@ -57,7 +57,7 @@ public class texter {
     public void sendText() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-                new PhoneNumber("+16024913461"), new PhoneNumber(TWILIO_PHONE_NUMBER),"drink water bitc*").create();
+                new PhoneNumber("+16024913461"), new PhoneNumber(TWILIO_PHONE_NUMBER),text).create();
             
         setTextSent(true);
     }
