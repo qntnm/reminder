@@ -1,17 +1,16 @@
 package reminder;
-import reminder.util;
 import java.util.UUID;
 
 public class progress {
     String name;
-    int completion;
-    int current;
+    double completion;
+    double current;
     UUID id;
     /**
     * Creates a progress
     * 
     */
-    public progress(int completion, int current) {
+    public progress() {
         this.completion = completion;
         this.current = current;
         id = UUID.randomUUID();
@@ -20,11 +19,12 @@ public class progress {
     public void setProgress(String p_name, int p_completion){
         completion = p_completion;
     } 
-    public  double getProgessNumber(double num2, double num1){
-        double num3 = (num2/num1) * 100;
-        return num3;
+    public double getProgessNumber(double current,double completion){
+        double num3 = (current/completion);
+        return num3 * 100;
     }  
-    public  String getProgress(){
+    // given the completion and current values of a remidner, it outputs a string "progress bar" representation of the reminder's progress.
+    public  String getProgress(double current,double completion){
         if(current !=0 && completion !=0){
         String xl= "x";
         String ol = "o";
@@ -37,7 +37,7 @@ public class progress {
         for(int j=0; j <(completion-current); j++){
             tempx += xl;
         }
-        array = "[" + tempo + (int) getProgessNumber(current,completion)+ "%" + tempx + "]";
+        array = "[" + tempo +  (int) getProgessNumber(current,completion)+ "%" + tempx + "]";
         return array;
     }else{
         return "[0%]";

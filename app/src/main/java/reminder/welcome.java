@@ -14,7 +14,6 @@ public class welcome {
         phoneNumber = scan.nextLine();
         user.init(name,phoneNumber);
         System.out.println("Thank you for joining " + user.getName());
-        System.out.println("Please press enter");
       
     }
 }

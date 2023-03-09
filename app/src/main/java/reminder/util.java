@@ -1,10 +1,6 @@
 package reminder;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -19,11 +15,11 @@ public class util {
 
     // Logo in some Nice looking font (might not work with some terminals )
     public static void Logo() {
-        System.out.println("██████  ███████ ███    ███ ██ ███    ██ ██████  ███████ ██████");
-        System.out.println("██  ██  ██      ████  ████ ██ ████   ██ ██   ██ ██      ██  ██");
-        System.out.println("██████  █████   ██ ████ ██ ██ ██ ██  ██ ██   ██ █████   ██████");
-        System.out.println("██   ██ ██      ██  ██  ██ ██ ██  ██ ██ ██   ██ ██      ██   ██");
-        System.out.println("██   ██ ███████ ██      ██ ██ ██   ████ ██████  ███████ ██   ██");
+        System.out.println("██████  ███████ ███    ███ ██ ███    ██ ██████   ███    ███ ███████  ");
+        System.out.println("██  ██  ██      ████  ████ ██ ████   ██ ██   ██  ████  ████ ██      ");
+        System.out.println("██████  █████   ██ ████ ██ ██ ██ ██  ██ ██   ██  ██ ████ ██ ██████  ");
+        System.out.println("██   ██ ██      ██  ██  ██ ██ ██  ██ ██ ██   ██  ██  ██  ██ ██      ");
+        System.out.println("██   ██ ███████ ██      ██ ██ ██   ████ ██████   ██      ██ ███████ ");
 
     }
 
@@ -57,13 +53,11 @@ public class util {
         }
     }
 
-    // Increments the dashes in the row delimeter by x amount or increments the
-    // spaces adds 3 spaces infront and behind a word
+    // Increments the dashes in the row delimeter by x amount or increments the spaces adds 3 spaces infront and behind a input.
     public static String AutoIncrement(String input, String value, boolean column, int length) {
         String output1 = "";
         String output2 = "";
         String dash1 = "";
-
         if (!column) {
             for (int i = 0; i < 6; i++) {
                 if (i % 2 == 0) {
@@ -84,19 +78,22 @@ public class util {
             return output;
         } else
             return dash;
-
     }
 
-    // Traverses through an arraylist and adds the length of each name within each
-    // object
+
+    // Compound adds the length of the title,duration(parsed as string),completion(parsed as string),boolean(parsed as string),and date (parsed as string). 
+    // The value is 34 equal to 6 spaces per word * 5 words + 4 space for best spacing given CMD terminal. 
     public static int getLengthArray(ArrayList<reminder> reminders, int index) {
         int length = 0;
 
-        length += (reminders.get(index).getTitle().length() + intToString(reminders.get(index).getDuration()).length() + intToString(reminders.get(index).completion).length() + booleanToString(reminders.get(index).getComplete()).length() + dateToString(reminders.get(index).getDate()).length());
-        //return (length * 5) + 34;
+        length += (reminders.get(index).getTitle().length() + intToString(reminders.get(index).getDuration()).length() + intToString(reminders.get(index).completion).length() + 
+        booleanToString(reminders.get(index).getComplete()).length() + dateToString(reminders.get(index).getDate()).length());
         return length + 34;
     }
+
+
     @Deprecated
+    // Spaces out the label of each value (e.g | title | duration | ) given the length of the first instance of reminder values.
     public static String spaceOut(int j,String k,reminder l){
         String spaced = "";
         // title
@@ -124,23 +121,24 @@ public class util {
         }
         
     }
+    // Parses Boolean to String (used in length function)
     public static String booleanToString(boolean x) {
         String temp = String.valueOf(x);
         return temp;
-
     }
-
+    // Parses int to string (used in length function)
     public static String intToString(int x) {
         Integer temp = new Integer(x);
         return String.valueOf(temp);
     }
-
+    // Parses date class in a string (used in length function)
     public static String dateToString(LocalDate date) {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
         String j = date.format(dateFormat);
         return j;
     }
-
+    
+    // A Counter for a given reminders streak (in days)
     public boolean streakCounter(reminder x) {
         if (date.isAfter(x.getDate())) {
             x.setStreak(x.getStreak() + 1);

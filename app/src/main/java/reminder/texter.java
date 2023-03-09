@@ -54,10 +54,13 @@ public class texter {
     public void setTextSent(boolean x){
         verifySent = x;
     }
+    /**
+     * Function that sends the text via creating a message throught the Twilio API
+     */
     public void sendText() {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-                new PhoneNumber("+16024913461"), new PhoneNumber(TWILIO_PHONE_NUMBER),text).create();
+                new PhoneNumber(user.getPhoneNumber()), new PhoneNumber(TWILIO_PHONE_NUMBER),text).create();
             
         setTextSent(true);
     }

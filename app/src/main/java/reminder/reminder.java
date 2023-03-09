@@ -33,12 +33,12 @@ public class reminder{
         this.streak = streak;
         this.snooze = snooze;
         this.completion = completion;                                               
-        progressUser = new progress(this.snooze,this.completion);  
+        progressUser = new progress();  
         time = new Timer();
         time.schedule(new textTask(), duration*60000);
         id = UUID.randomUUID();
         now = LocalDate.now(); 
-        twilio = new texter(title);
+        twilio = new texter(this.title);
         
    
     }
@@ -54,6 +54,9 @@ public class reminder{
      * */
     public boolean getComplete(){
         return isComplete;
+    }
+    public int getCompletion(){
+        return completion;
     }
     /**
      * @return The duration of the timer set by the user (e.g 1 hour to drink water)
@@ -77,7 +80,7 @@ public class reminder{
         return now;
     } 
     public String getProgess(){
-        return progressUser.getProgress();
+        return progressUser.getProgress(getSnooze(),getCompletion());
     }
     public void setDate(LocalDate p_date){
         now = p_date;
@@ -127,6 +130,9 @@ public class reminder{
     public void setStreak(int p_streak){
         streak = p_streak;
     }
+    /**
+     * Function that when the timer is completed and a text isnt already sent, a text is sent to the user.
+     */
     public class textTask extends TimerTask {
         public void run() {
         if(!isComplete && !twilio.verifySent){

@@ -1,8 +1,6 @@
 package reminder;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class main {
 
@@ -10,7 +8,9 @@ public class main {
     ArrayList<reminder> userArray = new ArrayList<reminder>();
      welcome.welcomeScreen();
      userArray = table.addReminders();
-     table.tableScreen(userArray);
+     table.tableScreen(userArray,2);
+    texter j = new texter("Drink water");
+    j.sendText();
     
     }
 
