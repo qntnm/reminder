@@ -1,5 +1,5 @@
 # reminder (app)
-This is my CS IA, a reminder app that helps people with ADHD. 
+This is a reminder app that helps people with ADHD. 
 # Libraries used
 This project uses (will use) [twilio](https://www.twilio.com/docs/libraries/java)
 # sucess criteria
@@ -10,11 +10,11 @@ This project uses (will use) [twilio](https://www.twilio.com/docs/libraries/java
 
 
 ToDo list:
-- [ ] write the getters and setters for each class
-- [ ] implement a basic text based interface for user input
-- [ ] implement SMS text messaging using twillio
-- [ ] convert the java project to an EXE
-- [ ] send to client
+- [x] write the getters and setters for each class
+- [x] implement a basic text based interface for user input
+- [x] implement SMS text messaging using twillio
+- [x] convert the java project to an EXE
+- [x] send to client
 
 
 # logo (client asked to include it)
